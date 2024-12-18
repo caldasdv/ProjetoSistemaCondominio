@@ -1,54 +1,68 @@
-const Unidade = require('../models/unidade');
+const Unidade = require("../models/unidade");
 
-module.exports = {
-    async show(req, res) {
-        try {
-            const unidades = await Unidade.find();
-            return res.json(unidades);
-        } catch (err) {
-            return res.status(500).json({ error: 'Erro ao listar unidades' });
-        }
-    },
+// Lista todas as unidades
+module.exports.show = async (req, res) => {
+    try {
+        const unidades = await Unidade.find();
+        res.json(unidades);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao listar unidades" });
+    }
+};
 
-    async index(req, res) {
-        try {
-            const { id } = req.params;
-            const unidade = await Unidade.findById(id);
-            if (!unidade) return res.status(404).json({ error: 'Unidade não encontrada' });
-            return res.json(unidade);
-        } catch (err) {
-            return res.status(500).json({ error: 'Erro ao buscar unidade' });
+// Busca uma unidade por ID
+module.exports.index = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const unidade = await Unidade.findById(id);
+        if (!unidade) {
+            return res.status(404).json({ error: "Unidade não encontrada" });
         }
-    },
+        res.json(unidade);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao buscar unidade" });
+    }
+};
 
-    async store(req, res) {
-        try {
-            const unidade = await Unidade.create(req.body);
-            return res.status(201).json(unidade);
-        } catch (err) {
-            return res.status(400).json({ error: 'Erro ao criar unidade' });
-        }
-    },
+// Cria uma nova unidade
+module.exports.store = async (req, res) => {
+    try {
+        const novaUnidade = new Unidade(req.body);
+        await novaUnidade.save();
+        res.status(201).json(novaUnidade);
+    } catch (error) {
+        res.status(400).json({ error: "Erro ao criar unidade" });
+    }
+};
 
-    async update(req, res) {
-        try {
-            const { id } = req.params;
-            const unidade = await Unidade.findByIdAndUpdate(id, req.body, { new: true });
-            if (!unidade) return res.status(404).json({ error: 'Unidade não encontrada' });
-            return res.json(unidade);
-        } catch (err) {
-            return res.status(400).json({ error: 'Erro ao atualizar unidade' });
+// Atualiza uma unidade existente
+module.exports.update = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const unidadeAtualizada = await Unidade.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true },
+        );
+        if (!unidadeAtualizada) {
+            return res.status(404).json({ error: "Unidade não encontrada" });
         }
-    },
+        res.json(unidadeAtualizada);
+    } catch (error) {
+        res.status(400).json({ error: "Erro ao atualizar unidade" });
+    }
+};
 
-    async destroy(req, res) {
-        try {
-            const { id } = req.params;
-            const unidade = await Unidade.findByIdAndDelete(id);
-            if (!unidade) return res.status(404).json({ error: 'Unidade não encontrada' });
-            return res.json({ message: 'Unidade deletada com sucesso' });
-        } catch (err) {
-            return res.status(500).json({ error: 'Erro ao deletar unidade' });
+// Deleta uma unidade
+module.exports.destroy = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const unidadeDeletada = await Unidade.findByIdAndDelete(id);
+        if (!unidadeDeletada) {
+            return res.status(404).json({ error: "Unidade não encontrada" });
         }
-    },
+        res.json({ message: "Unidade deletada com sucesso" });
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao deletar unidade" });
+    }
 };

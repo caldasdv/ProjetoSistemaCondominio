@@ -18,3 +18,4 @@ router.delete('/:id', financeiroController.destroy);
 router.put('/:id', financeiroController.update);
 
 module.exports = router;
+

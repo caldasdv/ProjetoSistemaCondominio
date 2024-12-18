@@ -17,7 +17,7 @@ const clientOptions = {
 async function connectDatabase() {
   try {
     await mongoose.connect(uri, clientOptions);
-    console.log("Conectado ao MongoDB com sucesso!");
+    console.log("Conectado ao MongoDB com sucesso");
   } catch (err) {
     console.log("Erro ao conectar ao MongoDB:", err);
     process.exit(1); // Encerra o processo se a conexão falhar
@@ -35,7 +35,7 @@ app.use('/api', routes);
 
 // Rota de boas-vindas
 app.get('/', (req, res) => {
-  res.send('Bem-vindo ao Sistema de Gerenciamento de Condomínio');
+  res.send('Bem-vindo ao Sistema de Gerenciamento de Condominio');
 });
 
 // Inicia o servidor
