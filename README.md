@@ -10,7 +10,7 @@
 - **Leandro Vaguetti**
 
 ## 👨‍🎓 Alunos
-- **[Arthur Ferreira]()**
+- **[Arthur Ferreira](https://github.com/Necronomicatto)**
 - **[David Caldas](https://github.com/caldasdv)**
 - **[Tales Oliveira](https://github.com/TalesLimaOliveira)**
 
