@@ -60,6 +60,7 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
 | ├`models/`        | Modelo de dados para usuários.                |
 | ├`routers/`       | Rotas da aplicação.                           |
 | ├`index.js`       | Ponto de entrada da aplicação.                | 
+| ├`docs/`          | Imagens para exemplos de uso.                 |
 | ├`package.json`   | Configurações do projeto e dependências.      |
 | └`README.md`      | Documentação do projeto (este arquivo).       |
 
@@ -72,21 +73,6 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
 
 2. **Inicie a aplicação:**  
 > npm start
-
----
-
-### 📌 Exemplos de Uso
-- O servidor estará rodando na porta 3001. Acesse `http://localhost:3001` para ver a mensagem de boas-vindas.
-
-- Use um cliente HTTP (como Postman) para interagir com a API através das rotas definidas em `src/routers/routes.js`.
-
-- Adicionar um usuário:
-
-> curl -X POST http://localhost:3001/user -H "Content-Type: application/json" -d '{"nome": "John Doe", "email": "john@example.com", "password": "123456"}'
-
-- Listar todos os usuários:
-
-> curl http://localhost:3001/user
 
 ---
 
@@ -170,3 +156,308 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
 - `GET /api/bloco`: Lista todos os blocos.
 - `PUT /api/bloco/:id`: Atualiza as informações de um bloco.
 - `DELETE /api/bloco/:id`: Deleta um bloco.
+
+---
+
+### 📌 Exemplos de Uso
+- O servidor estará rodando na porta 3001. Acesse `http://localhost:3001` para ver a mensagem de boas-vindas.
+
+- Use um cliente HTTP (como Postman) para interagir com a API através das rotas definidas em `src/routers/routes.js`.
+
+#### Adicionar um Usuário
+
+- **Rota**: `POST /user`
+- **Descrição**: Adiciona um novo usuário ao sistema.
+- **Entrada**:
+  - `nome` (string): Nome do usuário.
+  - `email` (string): Email do usuário.
+  - `password` (string): Senha do usuário.
+- **Exemplo de Requisição**:
+    > curl -X POST http://localhost:3001/user -H "Content-Type: application/json" -d '{"nome": "João da Silva", "email": "joao.silva@hotmail.com", "password": "12345678"}'
+
+- **Saída**:
+  - `id` (string): ID do usuário.
+  - `nome` (string): Nome do usuário.
+  - `email` (string): Email do usuário.
+- **Tela do Protótipo**:
+  - A tela de cadastro de usuário utiliza esta rota para adicionar novos usuários.
+  <img src="docs/imgs/adduser.jpg" alt="Tela de Usuário" width="200"/>
+
+#### Listar Todos os Usuários
+
+- **Rota**: `GET /user`
+- **Descrição**: Lista todos os usuários cadastrados no sistema.
+- **Entrada**: Nenhuma.
+- **Exemplo de Requisição**:
+    > curl http://localhost:3001/user
+- **Saída**:
+  - `users` (array): Lista de usuários.
+    - `id` (string): ID do usuário.
+    - `nome` (string): Nome do usuário.
+    - `email` (string): Email do usuário.
+- **Tela do Protótipo**:
+  - A tela de listagem de usuários utiliza esta rota para exibir todos os usuários cadastrados.
+  <img src="docs/imgs/listusers.jpg" alt="Tela de Listagem de Usuários" width="200"/>
+
+#### Atualizar um Usuário
+
+- **Rota**: `PUT /user/:id`
+- **Descrição**: Atualiza as informações de um usuário existente.
+- **Entrada**:
+  - `nome` (string): Nome do usuário.
+  - `email` (string): Email do usuário.
+  - `password` (string): Senha do usuário.
+- **Exemplo de Requisição**:
+    > curl -X PUT http://localhost:3001/user/1 -H "Content-Type: application/json" -d '{"nome": "João da Silva", "email": "joao.silva@hotmail.com", "password": "87654321"}'
+- **Saída**:
+  - `id` (string): ID do usuário.
+  - `nome` (string): Nome do usuário.
+  - `email` (string): Email do usuário.
+- **Tela do Protótipo**:
+  - A tela de edição de usuário utiliza esta rota para atualizar as informações de um usuário existente.
+  <img src="docs/imgs/edituser.jpg" alt="Tela de Edição de Usuário" width="200"/>
+
+#### Deletar um Usuário
+
+- **Rota**: `DELETE /user/:id`
+- **Descrição**: Deleta um usuário do sistema.
+- **Entrada**: Nenhuma.
+- **Exemplo de Requisição**:
+    > curl -X DELETE http://localhost:3001/user/1
+- **Saída**:
+  - Mensagem de confirmação da exclusão.
+- **Tela do Protótipo**:
+  - A tela de listagem de usuários utiliza esta rota para deletar um usuário.
+  <img src="docs/imgs/deleteuser.jpg" alt="Tela de Deleção de Usuário" width="200"/>
+
+#### Adicionar uma Unidade
+
+- **Rota**: `POST /unidade`
+- **Descrição**: Adiciona uma nova unidade ao sistema.
+- **Entrada**:
+  - `numero` (string): Número da unidade.
+  - `tipo` (string): Tipo da unidade (residencial ou comum).
+  - `bloco` (string): ID do bloco.
+  - `proprietario` (string): Nome do proprietário (se aplicável).
+  - `moradores` (array): Lista de moradores (se aplicável).
+  - `descricao` (string): Descrição da unidade.
+- **Exemplo de Requisição**:
+    > curl -X POST http://localhost:3001/unidade -H "Content-Type: application/json" -d '{"numero": "101", "tipo": "residencial", "bloco": "12345", "proprietario": "João da Silva", "moradores": ["Maria da Silva"], "descricao": "Apartamento com vista para o parque"}'
+- **Saída**:
+  - `id` (string): ID da unidade.
+  - `numero` (string): Número da unidade.
+  - `tipo` (string): Tipo da unidade.
+  - `bloco` (string): ID do bloco.
+  - `proprietario` (string): Nome do proprietário.
+  - `moradores` (array): Lista de moradores.
+  - `descricao` (string): Descrição da unidade.
+- **Tela do Protótipo**:
+  - A tela de cadastro de unidade utiliza esta rota para adicionar novas unidades.
+  <img src="docs/imgs/addunit.jpg" alt="Tela de Unidade" width="200"/>
+
+#### Listar Todas as Unidades
+
+- **Rota**: `GET /unidade`
+- **Descrição**: Lista todas as unidades cadastradas no sistema.
+- **Entrada**: Nenhuma.
+- **Exemplo de Requisição**:
+    > curl http://localhost:3001/unidade
+- **Saída**:
+  - `unidades` (array): Lista de unidades.
+    - `id` (string): ID da unidade.
+    - `numero` (string): Número da unidade.
+    - `tipo` (string): Tipo da unidade.
+    - `bloco` (string): ID do bloco.
+    - `proprietario` (string): Nome do proprietário.
+    - `moradores` (array): Lista de moradores.
+    - `descricao` (string): Descrição da unidade.
+- **Tela do Protótipo**:
+  - A tela de listagem de unidades utiliza esta rota para exibir todas as unidades cadastradas.
+  <img src="docs/imgs/listunits.jpg" alt="Tela de Listagem de Unidades" width="200"/>
+
+#### Atualizar uma Unidade
+
+- **Rota**: `PUT /unidade/:id`
+- **Descrição**: Atualiza as informações de uma unidade existente.
+- **Entrada**:
+  - `numero` (string): Número da unidade.
+  - `tipo` (string): Tipo da unidade.
+  - `bloco` (string): ID do bloco.
+  - `proprietario` (string): Nome do proprietário.
+  - `moradores` (array): Lista de moradores.
+  - `descricao` (string): Descrição da unidade.
+- **Exemplo de Requisição**:
+    > curl -X PUT http://localhost:3001/unidade/1 -H "Content-Type: application/json" -d '{"numero": "101", "tipo": "residencial", "bloco": "12345", "proprietario": "João da Silva", "moradores": ["Maria da Silva"], "descricao": "Apartamento com vista para o parque"}'
+- **Saída**:
+  - `id` (string): ID da unidade.
+  - `numero` (string): Número da unidade.
+  - `tipo` (string): Tipo da unidade.
+  - `bloco` (string): ID do bloco.
+  - `proprietario` (string): Nome do proprietário.
+  - `moradores` (array): Lista de moradores.
+  - `descricao` (string): Descrição da unidade.
+- **Tela do Protótipo**:
+  - A tela de edição de unidade utiliza esta rota para atualizar as informações de uma unidade existente.
+  <img src="docs/imgs/editunit.jpg" alt="Tela de Edição de Unidade" width="200"/>
+
+#### Deletar uma Unidade
+
+- **Rota**: `DELETE /unidade/:id`
+- **Descrição**: Deleta uma unidade do sistema.
+- **Entrada**: Nenhuma.
+- **Exemplo de Requisição**:
+    > curl -X DELETE http://localhost:3001/unidade/1
+- **Saída**:
+  - Mensagem de confirmação da exclusão.
+- **Tela do Protótipo**:
+  - A tela de listagem de unidades utiliza esta rota para deletar uma unidade.
+  <img src="docs/imgs/deleteunit.jpg" alt="Tela de Deleção de Unidade" width="200"/>
+
+#### Adicionar uma Reserva
+
+- **Rota**: `POST /reserva`
+- **Descrição**: Adiciona uma nova reserva ao sistema.
+- **Entrada**:
+  - `unidade` (string): ID da unidade.
+  - `data_reserva` (date): Data da reserva.
+  - `periodo_inicio` (date): Início do período da reserva.
+  - `periodo_fim` (date): Fim do período da reserva.
+  - `descricao` (string): Descrição da reserva.
+- **Exemplo de Requisição**:
+    > curl -X POST http://localhost:3001/reserva -H "Content-Type: application/json" -d '{"unidade": "12345", "data_reserva": "2023-10-01", "periodo_inicio": "2023-10-01T10:00:00Z", "periodo_fim": "2023-10-01T12:00:00Z", "descricao": "Reserva do salão de festas"}'
+- **Saída**:
+  - `id` (string): ID da reserva.
+  - `unidade` (string): ID da unidade.
+  - `data_reserva` (date): Data da reserva.
+  - `periodo_inicio` (date): Início do período da reserva.
+  - `periodo_fim` (date): Fim do período da reserva.
+  - `descricao` (string): Descrição da reserva.
+- **Tela do Protótipo**:
+  - A tela de cadastro de reserva utiliza esta rota para adicionar novas reservas.
+  <img src="docs/imgs/addreserva.jpg" alt="Tela de Reserva" width="200"/>
+
+#### Listar Todas as Reservas
+
+- **Rota**: `GET /reserva`
+- **Descrição**: Lista todas as reservas cadastradas no sistema.
+- **Entrada**: Nenhuma.
+- **Exemplo de Requisição**:
+    > curl http://localhost:3001/reserva
+- **Saída**:
+  - `reservas` (array): Lista de reservas.
+    - `id` (string): ID da reserva.
+    - `unidade` (string): ID da unidade.
+    - `data_reserva` (date): Data da reserva.
+    - `periodo_inicio` (date): Início do período da reserva.
+    - `periodo_fim` (date): Fim do período da reserva.
+    - `descricao` (string): Descrição da reserva.
+- **Tela do Protótipo**:
+  - A tela de listagem de reservas utiliza esta rota para exibir todas as reservas cadastradas.
+  <img src="docs/imgs/listreservas.jpg" alt="Tela de Listagem de Reservas" width="200"/>
+
+#### Atualizar uma Reserva
+
+- **Rota**: `PUT /reserva/:id`
+- **Descrição**: Atualiza as informações de uma reserva existente.
+- **Entrada**:
+  - `unidade` (string): ID da unidade.
+  - `data_reserva` (date): Data da reserva.
+  - `periodo_inicio` (date): Início do período da reserva.
+  - `periodo_fim` (date): Fim do período da reserva.
+  - `descricao` (string): Descrição da reserva.
+- **Exemplo de Requisição**:
+    > curl -X PUT http://localhost:3001/reserva/1 -H "Content-Type: application/json" -d '{"unidade": "12345", "data_reserva": "2023-10-01", "periodo_inicio": "2023-10-01T10:00:00Z", "periodo_fim": "2023-10-01T12:00:00Z", "descricao": "Reserva do salão de festas"}'
+- **Saída**:
+  - `id` (string): ID da reserva.
+  - `unidade` (string): ID da unidade.
+  - `data_reserva` (date): Data da reserva.
+  - `periodo_inicio` (date): Início do período da reserva.
+  - `periodo_fim` (date): Fim do período da reserva.
+  - `descricao` (string): Descrição da reserva.
+- **Tela do Protótipo**:
+  - A tela de edição de reserva utiliza esta rota para atualizar as informações de uma reserva existente.
+  <img src="docs/imgs/editreserva.jpg" alt="Tela de Edição de Reserva" width="200"/>
+
+#### Deletar uma Reserva
+
+- **Rota**: `DELETE /reserva/:id`
+- **Descrição**: Deleta uma reserva do sistema.
+- **Entrada**: Nenhuma.
+- **Exemplo de Requisição**:
+    > curl -X DELETE http://localhost:3001/reserva/1
+- **Saída**:
+  - Mensagem de confirmação da exclusão.
+- **Tela do Protótipo**:
+  - A tela de listagem de reservas utiliza esta rota para deletar uma reserva.
+  <img src="docs/imgs/deletereserva.jpg" alt="Tela de Deleção de Reserva" width="200"/>
+
+#### Adicionar uma Movimentação Financeira
+
+- **Rota**: `POST /financeiro`
+- **Descrição**: Adiciona uma nova movimentação financeira ao sistema.
+- **Entrada**:
+  - `tipo` (string): Tipo da movimentação (receita ou despesa).
+  - `descricao` (string): Descrição da movimentação.
+  - `valor` (number): Valor da movimentação.
+  - `data` (date): Data da movimentação.
+  - `categoria` (string): Categoria da movimentação (conta, reserva, taxa_extra).
+  - `unidade` (string): ID da unidade (se aplicável).
+  - `taxa_extra` (string): ID da taxa extra (se aplicável).
+  - `reserva` (string): ID da reserva (se aplicável).
+  - `conta` (string): ID da conta (se aplicável).
+- **Exemplo de Requisição**:
+    > curl -X POST http://localhost:3001/financeiro -H "Content-Type: application/json" -d '{"tipo": "receita", "descricao": "Pagamento de condomínio", "valor": 500, "data": "2023-10-01", "categoria": "conta", "conta": "12345"}'
+- **Saída**:
+  - `id` (string): ID da movimentação.
+  - `tipo` (string): Tipo da movimentação.
+  - `descricao` (string): Descrição da movimentação.
+  - `valor` (number): Valor da movimentação.
+  - `data` (date): Data da movimentação.
+  - `categoria` (string): Categoria da movimentação.
+  - `unidade` (string): ID da unidade.
+  - `taxa_extra` (string): ID da taxa extra.
+  - `reserva` (string): ID da reserva.
+  - `conta` (string): ID da conta.
+- **Tela do Protótipo**:
+  - A tela de cadastro de movimentação financeira utiliza esta rota para adicionar novas movimentações.
+  <img src="docs/imgs/addfinanceiro.jpg" alt="Tela de Movimentação Financeira" width="200"/>
+
+#### Listar Todas as Movimentações Financeiras
+
+- **Rota**: `GET /financeiro`
+- **Descrição**: Lista todas as movimentações financeiras cadastradas no sistema.
+- **Entrada**: Nenhuma.
+- **Exemplo de Requisição**:
+    > curl http://localhost:3001/financeiro
+- **Saída**:
+  - `movimentacoes` (array): Lista de movimentações financeiras.
+    - `id` (string): ID da movimentação.
+    - `tipo` (string): Tipo da movimentação.
+    - `descricao` (string): Descrição da movimentação.
+    - `valor` (number): Valor da movimentação.
+    - `data` (date): Data da movimentação.
+    - `categoria` (string): Categoria da movimentação.
+    - `unidade` (string): ID da unidade.
+    - `taxa_extra` (string): ID da taxa extra.
+    - `reserva` (string): ID da reserva.
+    - `conta` (string): ID da conta.
+- **Tela do Protótipo**:
+  - A tela de listagem de movimentações financeiras utiliza esta rota para exibir todas as movimentações cadastradas.
+  <img src="docs/imgs/listfinanceiro.jpg" alt="Tela de Listagem de Movimentações Financeiras" width="200"/>
+
+#### Atualizar uma Movimentação Financeira
+
+- **Rota**: `PUT /financeiro/:id`
+- **Descrição**: Atualiza as informações de uma movimentação financeira existente.
+- **Entrada**:
+  - `tipo` (string): Tipo da movimentação.
+  - `descricao` (string): Descrição da movimentação.
+  - `valor` (number): Valor da movimentação.
+  - `data` (date): Data da movimentação.
+  - `categoria` (string): Categoria da movimentação.
+  - `unidade` (string): ID da unidade.
+  - `taxa_extra` (string): ID da taxa extra.
+  - `reserva` (string): ID da reserva.
+  - `conta` (string): ID da conta.
+- **Exemplo de Requisição**:
+    > curl -X PUT http://localhost:3001/financeiro/1 -H "Content-Type: application/json" -d '{"tipo": "receita", "descricao": "Pagamento de condomínio", "valor": 500, "data": "2023-10-01", "categoria": "conta", "conta": "12345"}'
