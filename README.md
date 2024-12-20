@@ -164,7 +164,7 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
 
 - Use um cliente HTTP (como Postman) para interagir com a API através das rotas definidas em `src/routers/routes.js`.
 
-#### Adicionar um Usuário
+#### → Adicionar um Usuário
 
 - **Rota**: `POST /user`
 - **Descrição**: Adiciona um novo usuário ao sistema.
@@ -181,9 +181,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `email` (string): Email do usuário.
 - **Tela do Protótipo**:
   - A tela de cadastro de usuário utiliza esta rota para adicionar novos usuários.
+
   <img src="docs/imgs/adduser.jpg" alt="Tela de Usuário" width="200"/>
 
-#### Listar Todos os Usuários
+#### → Listar Todos os Usuários
 
 - **Rota**: `GET /user`
 - **Descrição**: Lista todos os usuários cadastrados no sistema.
@@ -197,9 +198,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
     - `email` (string): Email do usuário.
 - **Tela do Protótipo**:
   - A tela de listagem de usuários utiliza esta rota para exibir todos os usuários cadastrados.
+
   <img src="docs/imgs/listusers.jpg" alt="Tela de Listagem de Usuários" width="200"/>
 
-#### Atualizar um Usuário
+#### → Atualizar um Usuário
 
 - **Rota**: `PUT /user/:id`
 - **Descrição**: Atualiza as informações de um usuário existente.
@@ -215,9 +217,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `email` (string): Email do usuário.
 - **Tela do Protótipo**:
   - A tela de edição de usuário utiliza esta rota para atualizar as informações de um usuário existente.
+
   <img src="docs/imgs/edituser.jpg" alt="Tela de Edição de Usuário" width="200"/>
 
-#### Deletar um Usuário
+#### → Deletar um Usuário
 
 - **Rota**: `DELETE /user/:id`
 - **Descrição**: Deleta um usuário do sistema.
@@ -228,9 +231,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - Mensagem de confirmação da exclusão.
 - **Tela do Protótipo**:
   - A tela de listagem de usuários utiliza esta rota para deletar um usuário.
+
   <img src="docs/imgs/deleteuser.jpg" alt="Tela de Deleção de Usuário" width="200"/>
 
-#### Adicionar uma Unidade
+#### → Adicionar uma Unidade
 
 - **Rota**: `POST /unidade`
 - **Descrição**: Adiciona uma nova unidade ao sistema.
@@ -251,11 +255,8 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `proprietario` (string): Nome do proprietário.
   - `moradores` (array): Lista de moradores.
   - `descricao` (string): Descrição da unidade.
-- **Tela do Protótipo**:
-  - A tela de cadastro de unidade utiliza esta rota para adicionar novas unidades.
-  <img src="docs/imgs/addunit.jpg" alt="Tela de Unidade" width="200"/>
 
-#### Listar Todas as Unidades
+#### → Listar Todas as Unidades
 
 - **Rota**: `GET /unidade`
 - **Descrição**: Lista todas as unidades cadastradas no sistema.
@@ -271,11 +272,8 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
     - `proprietario` (string): Nome do proprietário.
     - `moradores` (array): Lista de moradores.
     - `descricao` (string): Descrição da unidade.
-- **Tela do Protótipo**:
-  - A tela de listagem de unidades utiliza esta rota para exibir todas as unidades cadastradas.
-  <img src="docs/imgs/listunits.jpg" alt="Tela de Listagem de Unidades" width="200"/>
 
-#### Atualizar uma Unidade
+#### → Atualizar uma Unidade
 
 - **Rota**: `PUT /unidade/:id`
 - **Descrição**: Atualiza as informações de uma unidade existente.
@@ -296,11 +294,9 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `proprietario` (string): Nome do proprietário.
   - `moradores` (array): Lista de moradores.
   - `descricao` (string): Descrição da unidade.
-- **Tela do Protótipo**:
-  - A tela de edição de unidade utiliza esta rota para atualizar as informações de uma unidade existente.
-  <img src="docs/imgs/editunit.jpg" alt="Tela de Edição de Unidade" width="200"/>
 
-#### Deletar uma Unidade
+
+#### → Deletar uma Unidade
 
 - **Rota**: `DELETE /unidade/:id`
 - **Descrição**: Deleta uma unidade do sistema.
@@ -309,11 +305,8 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
     > curl -X DELETE http://localhost:3001/unidade/1
 - **Saída**:
   - Mensagem de confirmação da exclusão.
-- **Tela do Protótipo**:
-  - A tela de listagem de unidades utiliza esta rota para deletar uma unidade.
-  <img src="docs/imgs/deleteunit.jpg" alt="Tela de Deleção de Unidade" width="200"/>
 
-#### Adicionar uma Reserva
+#### → Adicionar uma Reserva
 
 - **Rota**: `POST /reserva`
 - **Descrição**: Adiciona uma nova reserva ao sistema.
@@ -334,9 +327,11 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `descricao` (string): Descrição da reserva.
 - **Tela do Protótipo**:
   - A tela de cadastro de reserva utiliza esta rota para adicionar novas reservas.
-  <img src="docs/imgs/addreserva.jpg" alt="Tela de Reserva" width="200"/>
 
-#### Listar Todas as Reservas
+  <img src="docs/imgs/addreserva01.jpg" alt="Tela de Reserva" width="200"/>
+  <img src="docs/imgs/addreserva02.jpg" alt="Tela de Reserva" width="200"/>
+
+#### → Listar Todas as Reservas
 
 - **Rota**: `GET /reserva`
 - **Descrição**: Lista todas as reservas cadastradas no sistema.
@@ -353,9 +348,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
     - `descricao` (string): Descrição da reserva.
 - **Tela do Protótipo**:
   - A tela de listagem de reservas utiliza esta rota para exibir todas as reservas cadastradas.
+  
   <img src="docs/imgs/listreservas.jpg" alt="Tela de Listagem de Reservas" width="200"/>
 
-#### Atualizar uma Reserva
+#### → Atualizar uma Reserva
 
 - **Rota**: `PUT /reserva/:id`
 - **Descrição**: Atualiza as informações de uma reserva existente.
@@ -376,9 +372,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `descricao` (string): Descrição da reserva.
 - **Tela do Protótipo**:
   - A tela de edição de reserva utiliza esta rota para atualizar as informações de uma reserva existente.
+
   <img src="docs/imgs/editreserva.jpg" alt="Tela de Edição de Reserva" width="200"/>
 
-#### Deletar uma Reserva
+#### → Deletar uma Reserva
 
 - **Rota**: `DELETE /reserva/:id`
 - **Descrição**: Deleta uma reserva do sistema.
@@ -389,9 +386,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - Mensagem de confirmação da exclusão.
 - **Tela do Protótipo**:
   - A tela de listagem de reservas utiliza esta rota para deletar uma reserva.
+
   <img src="docs/imgs/deletereserva.jpg" alt="Tela de Deleção de Reserva" width="200"/>
 
-#### Adicionar uma Movimentação Financeira
+#### → Adicionar uma Movimentação Financeira
 
 - **Rota**: `POST /financeiro`
 - **Descrição**: Adiciona uma nova movimentação financeira ao sistema.
@@ -420,9 +418,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `conta` (string): ID da conta.
 - **Tela do Protótipo**:
   - A tela de cadastro de movimentação financeira utiliza esta rota para adicionar novas movimentações.
-  <img src="docs/imgs/addfinanceiro.jpg" alt="Tela de Movimentação Financeira" width="200"/>
 
-#### Listar Todas as Movimentações Financeiras
+  <img src="docs/imgs/financeiro.jpg" alt="Tela de Movimentação Financeira" width="200"/>
+
+#### → Listar Todas as Movimentações Financeiras
 
 - **Rota**: `GET /financeiro`
 - **Descrição**: Lista todas as movimentações financeiras cadastradas no sistema.
@@ -443,9 +442,10 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
     - `conta` (string): ID da conta.
 - **Tela do Protótipo**:
   - A tela de listagem de movimentações financeiras utiliza esta rota para exibir todas as movimentações cadastradas.
-  <img src="docs/imgs/listfinanceiro.jpg" alt="Tela de Listagem de Movimentações Financeiras" width="200"/>
 
-#### Atualizar uma Movimentação Financeira
+  <img src="docs/imgs/financeiro.jpg" alt="Tela de Listagem de Movimentações Financeiras" width="200"/>
+
+#### → Atualizar uma Movimentação Financeira
 
 - **Rota**: `PUT /financeiro/:id`
 - **Descrição**: Atualiza as informações de uma movimentação financeira existente.
@@ -461,3 +461,14 @@ Este é um sistema completo para a gestão de um condomínio, que permite realiz
   - `conta` (string): ID da conta.
 - **Exemplo de Requisição**:
     > curl -X PUT http://localhost:3001/financeiro/1 -H "Content-Type: application/json" -d '{"tipo": "receita", "descricao": "Pagamento de condomínio", "valor": 500, "data": "2023-10-01", "categoria": "conta", "conta": "12345"}'
+- **Saída**:
+  - `id` (string): ID da movimentação.
+  - `descricao` (string): Descrição da movimentação.
+  - `valor` (number): Valor da movimentação.
+  - `data` (string): Data da movimentação.
+- **Tela do Protótipo**:
+  - A tela de edição de movimentação financeira utiliza esta rota para atualizar as informações de uma movimentação existente.
+
+  <img src="docs/imgs/financeiro.jpg" alt="Tela de Edição de Movimentação Financeira" width="200"/>
+
+---
